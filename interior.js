@@ -29,7 +29,7 @@ const app = createApp({
                 this.getData();
             })
             .catch((err)=>{
-                alert(err.res.data.message);
+                alert(err.response.data.message);
                 window.location = 'login.html';
             })
         },
@@ -42,14 +42,14 @@ const app = createApp({
                     this.pages = res.data.pagination;
                 })
                 .catch((err)=>{
-                    alert(err.res.data.message);
+                    alert(err.response.data.message);
                 })
         },
         //開啟modal
         openModel(states,item) {
             //新增狀態
             if(states === 'new'){
-                this.tempProduct = {
+                this.tempPorducts = {
                     imagesUrl: [],
                 }
                 this.isNew = true;
@@ -63,8 +63,7 @@ const app = createApp({
             }
             //刪除狀態
             else if(states === 'delet'){
-                this.tempPorducts = {...item};
-                this.$refs.deModal.        modelOpen();
+                this.$refs.deModal.modelOpen();
             }
         },
         //刪除資料
@@ -75,7 +74,7 @@ const app = createApp({
                 this.$refs.deModal.modalClose();
                 this.getData();
             }).catch((err) => {
-                alert(err.res.data.message);
+                alert(err.response.data.message);
             })
         },
         //新增資料

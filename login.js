@@ -19,8 +19,8 @@ createApp({
                     alert('登入成功');
                     window.location = 'interior.html';
                 })
-                .catch((err)=>{
-                    console.log(err.res.data.message);
+                .catch((err)=>{response
+                    alert(err.response.data.message);
                 }) 
         }
     },

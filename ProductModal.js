@@ -1,11 +1,11 @@
 export default {
-    data() {
-        return {
-            prodModal: null,
-        }
-    },
-    props: [ 'tempPorducts' ,'addProduct','addImg','isNew'],
-    template: `<div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
+  data() {
+    return {
+      prodModal: null,
+    }
+  },
+  props: ['tempPorducts', 'addProduct', 'addImg', 'isNew'],
+  template: `<div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content border-0">
@@ -33,7 +33,7 @@ export default {
               <!-- 新增多圖 -->
               <h3 class="mb-3">新增多圖</h3>
               <!-- 判斷tempPorducts.imagesUrl是否為陣列，使用Array.isArray原生語法-->
-              <div v-if="Array.isArray(tempPorducts.imagesUrl)">
+              <template v-if="Array.isArray(tempPorducts.imagesUrl)">
                 <div class="mb-1" v-for="(img, key) in tempPorducts.imagesUrl" :key="key">
                   <div class="mb-3">
                     <label for="imageUrl" class="form-label">圖片網址</label>
@@ -43,22 +43,22 @@ export default {
                   </div>
                   <img :src="img" alt="img" class="img-fluid">
                 </div>
-                <div v-if="!tempPorducts.imagesUrl.length || tempPorducts.imagesUrl[tempPorducts.imagesUrl - 1]">
+                <template v-if="!tempPorducts.imagesUrl.length || tempPorducts.imagesUrl[tempPorducts.imagesUrl - 1]">
                   <!-- 陣列內沒有圖片 or 最後一張照片是否為真值 -->
                   <button class="btn btn-outline-primary btn-sm d-block w-100"
                     @click="tempPorducts.imagesUrl.push('')">新增圖片
                   </button>
-                </div>
-                <div v-else>
+                </template>
+                <template v-else>
                   <button class="btn btn-outline-danger btn-sm d-block w-100" @click="tempPorducts.imagesUrl.pop()">
                     刪除圖片
                   </button>
-                </div>
-              </div>
-              <div v-else>
+                </template>
+              </template>
+              <template v-else>
                 <button class="btn btn-outline-primary btn-sm d-block w-100" @click="addImg">新增圖片
                 </button>
-              </div>
+              </template>
             </div>
 
 
@@ -127,18 +127,18 @@ export default {
       </div>
     </div>
     </div>`,
-    methods: {
-        modelOpen() {
-            this.prodModal.show();
-        },
-        modalClose(){
-            this.prodModal.hide();
-        }
+  methods: {
+    modelOpen() {
+      this.prodModal.show();
     },
-    mounted() {
-        this.prodModal = new bootstrap.Modal(this.$refs.productModal),{
-            keyboard: false,
-            backdorop: 'static'
-        };
+    modalClose() {
+      this.prodModal.hide();
     }
+  },
+  mounted() {
+    this.prodModal = new bootstrap.Modal(this.$refs.productModal), {
+      keyboard: false,
+      backdorop: 'static'
+    };
+  }
 };
