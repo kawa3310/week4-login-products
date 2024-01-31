@@ -4,7 +4,7 @@ export default {
             delModal: null,
         }
     },
-    props: [ 'tempPorducts','delProduct'],
+    props: [ 'tempPorducts','delProduct',],
     methods: {
         modelOpen() {
             this.delModal.show();

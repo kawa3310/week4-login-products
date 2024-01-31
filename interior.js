@@ -63,6 +63,7 @@ const app = createApp({
             }
             //刪除狀態
             else if(states === 'delet'){
+                this.tempPorducts = {...item};
                 this.$refs.deModal.modelOpen();
             }
         },
